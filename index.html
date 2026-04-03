@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pâques en Famille - Dédicaces</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: linear-gradient(135deg, #4a00e0 0%, #8e2de2 100%);
+      min-height: 100vh;
+      font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+      overflow-x: hidden;
+      position: relative;
+      color: #333;
+    }
+
+    /* Arrière-plan animé */
+    .bg-eggs {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .floating-egg {
+      position: absolute;
+      width: 40px; height: 55px;
+      background: linear-gradient(135deg, #ffd700, #ffed4e);
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+      opacity: 0.15;
+      animation: floatEgg 18s infinite ease-in-out;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    @keyframes floatEgg {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-35px) rotate(180deg); }
+    }
+
+    /* Container principal */
+    .container {
+      position: relative;
+      z-index: 10;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 20px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      color: white;
+      margin-bottom: 20px;
+      animation: fadeInDown 1s ease;
+    }
+
+    .header h1 {
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      text-shadow: 2px 3px 8px rgba(0,0,0,0.3);
+      margin-bottom: 8px;
+    }
+
+    .header p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      font-weight: 300;
+    }
+
+    /* Navigation */
+    .nav-buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-bottom: 25px;
+      animation: fadeIn 1s ease 0.3s both;
+    }
+
+    .nav-btn {
+      background: rgba(255,255,255,0.9);
+      border: 2px solid transparent;
+      padding: 12px 25px;
+      border-radius: 30px;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #5a3a8a;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .nav-btn:hover, .nav-btn.active {
+      transform: translateY(-3px) scale(1.05);
+      background: #ffd700;
+      border-color: #fff;
+      box-shadow: 0 8px 20px rgba(255,215,0,0.4);
+    }
+
+    /* Wrapper des sections */
+    .sections-wrapper {
+      position: relative;
+      min-height: 650px;
+      animation: fadeIn 1s ease 0.5s both;
+    }
+
+    .section {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 50px;
+      padding: 20px;
+      opacity: 0;
+      transform: translateX(60px);
+      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none;
+    }
+
+    .section.active {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: all;
+      z-index: 2;
+    }
+
+    .section.reverse {
+      flex-direction: row-reverse;
+    }
+
+    /* Contenu texte */
+    .text-content {
+      flex: 1;
+      max-width: 550px;
+      background: rgba(255, 255, 255, 0.97);
+      padding: 35px;
+      border-radius: 20px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.25);
+      backdrop-filter: blur(8px);
+      animation: slideIn 0.8s ease;
+    }
+
+    .text-content h2 {
+      color: #5a3a8a;
+      font-size: 1.9rem;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .poem {
+      color: #444;
+      line-height: 1.9;
+      font-size: 1.05rem;
+      margin-bottom: 22px;
+      padding: 20px;
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      border-radius: 12px;
+      border-left: 6px solid #ffd700;
+      font-style: italic;
+    }
+
+    .prayer {
+      color: #5a4a7a;
+      line-height: 1.7;
+      font-size: 1.05rem;
+      padding: 18px;
+      background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+      border-radius: 12px;
+      border-left: 6px solid #8e2de2;
+    }
+
+    .prayer strong {
+      color: #4a00e0;
+    }
+
+    /* Image container */
+    .image-container {
+      flex: 1;
+      max-width: 450px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      animation: imageFloat 4s ease-in-out infinite;
+    }
+
+    .image-frame {
+      width: 100%;
+      height: 420px;
+      background: white;
+      padding: 12px;
+      border-radius: 20px;
+      box-shadow: 0 15px 50px rgba(0,0,0,0.3);
+      transform: rotate(2deg);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .image-frame::after {
+      content: '🌸';
+      position: absolute;
+      bottom: -15px;
+      left: -15px;
+      font-size: 50px;
+      opacity: 0.15;
+      transform: rotate(-20deg);
+    }
+
+    .image-frame:hover {
+      transform: rotate(0deg) scale(1.03);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+    }
+
+    .placeholder-text {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+      color: white;
+      font-size: 1.3rem;
+      font-weight: 600;
+      text-align: center;
+      border-radius: 10px;
+      padding: 20px;
+      line-height: 1.5;
+    }
+
+    /* Animations */
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(-20px) scale(0.95); }
+      to { opacity: 1; transform: translateX(0) scale(1); }
+    }
+
+    @keyframes imageFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+
+    /* Indicateurs */
+    .indicators {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 30px;
+      animation: fadeIn 1s ease 0.8s both;
+    }
+
+    .indicator {
+      width: 14px; height: 14px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.5);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+    }
+
+    .indicator.active {
+      background: #ffd700;
+      border-color: white;
+      transform: scale(1.3);
+      box-shadow: 0 0 12px rgba(255,215,0,0.6);
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .section, .section.reverse {
+        flex-direction: column !important;
+        gap: 25px;
+      }
+      .image-container {
+        max-width: 320px;
+        height: auto;
+      }
+      .image-frame {
+        height: 300px;
+      }
+      .text-content {
+        padding: 25px;
+      }
+      .sections-wrapper {
+        min-height: 900px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Arrière-plan animé -->
+  <div class="bg-eggs" id="bgEggs"></div>
+
+  <div class="container">
+    <div class="header">
+      <h1>🐣 Joyeuses Pâques en Famille 🐰</h1>
+      <p>Découvrez nos messages de foi, d'amour et de reconnaissance</p>
+    </div>
+
+    <!-- Navigation -->
+    <div class="nav-buttons">
+      <button class="nav-btn active" onclick="showSection(0)">💌 Tonton Frédéric</button>
+      <button class="nav-btn" onclick="showSection(1)">💌 Tatie Claire-Lise</button>
+      <button class="nav-btn" onclick="showSection(2)">💌 Toute la Famille</button>
+    </div>
+
+    <!-- Sections -->
+    <div class="sections-wrapper">
+      
+      <!-- Section 1: Tonton Frédéric (Texte gauche, Image droite) -->
+      <div class="section active" id="section0">
+        <div class="text-content">
+          <h2>💌 Pour Tonton Frédéric</h2>
+          <div class="poem">
+            Tonton Frédéric, pilier de notre vie,<br>
+            Dans tes paroles, Dieu nous bénit.<br>
+            Quand le doute s’approche de nos cœurs,<br>
+            Ta présence nous rend plus forts, sans peur.<br><br>
+            Tu es pour nous un guide discret,<br>
+            Un homme de foi, humble et vrai.<br>
+            Que le Seigneur te garde chaque jour,<br>
+            Et remplisse ta vie de paix et d’amour.
+          </div>
+          <div class="prayer">
+            🙏 <strong>Prière :</strong> Seigneur, nous te confions Tonton Frédéric. Protège-le, fortifie-le et bénis chacune de ses démarches. Remplis son cœur de paix, de santé et de joie. Amen.
+          </div>
+        </div>
+        
+        <div class="image-container">
+          <div class="image-frame">
+            <div class="placeholder-text">📷 Photo de<br>Tonton Frédéric<br><small>(Remplacez par votre image)</small></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 2: Tatie Claire-Lise (Image gauche, Texte droite - INVERSÉ) -->
+      <div class="section reverse" id="section1">
+        <div class="text-content">
+          <h2>💌 Pour Tatie Claire-Lise</h2>
+          <div class="poem">
+            Tatie Claire-Lise, douce lumière,<br>
+            Ton cœur est rempli de prières.<br>
+            Dans ton regard, on voit la bonté,<br>
+            Une tendresse qui ne cesse de donner.<br><br>
+            Comme une étoile dans nos nuits,<br>
+            Tu apportes espoir et appui.<br>
+            Que Dieu te couvre de sa grâce infinie,<br>
+            Et veille sur toi jour et nuit.
+          </div>
+          <div class="prayer">
+            🙏 <strong>Prière :</strong> Seigneur, bénis Tatie Claire-Lise. Accorde-lui la santé, la paix intérieure et une joie profonde. Que ta présence l’accompagne toujours. Amen.
+          </div>
+        </div>
+        
+        <div class="image-container">
+          <div class="image-frame">
+            <div class="placeholder-text">📷 Photo de<br>Tatie Claire-Lise<br><small>(Remplacez par votre image)</small></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 3: Toute la Famille (Texte gauche, Image droite) -->
+      <div class="section" id="section2">
+        <div class="text-content">
+          <h2>💌 Pour Toute la Famille</h2>
+          <div class="poem">
+            Famille unie sous le regard de Dieu,<br>
+            Un trésor précieux, un lien merveilleux.<br>
+            Dans nos joies comme dans nos combats,<br>
+            Sa lumière nous guide pas à pas.<br><br>
+            Même loin les uns des autres parfois,<br>
+            Nos cœurs restent liés par la foi.<br>
+            Que l’amour ne cesse de grandir,<br>
+            Et que Dieu nous aide à toujours nous unir.
+          </div>
+          <div class="prayer">
+            🙏 <strong>Prière :</strong> Seigneur, protège notre famille. Garde-nous dans l’unité, dans l’amour et dans la paix. Bénis chaque membre et guide nos chemins. Amen.
+          </div>
+        </div>
+        
+        <div class="image-container">
+          <div class="image-frame">
+            <div class="placeholder-text">📷 Photo de<br>Toute la Famille<br><small>(Remplacez par votre image)</small></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Indicateurs -->
+    <div class="indicators">
+      <div class="indicator active" onclick="showSection(0)"></div>
+      <div class="indicator" onclick="showSection(1)"></div>
+      <div class="indicator" onclick="showSection(2)"></div>
+    </div>
+  </div>
+
+  <script>
+    let currentSection = 0;
+    const sections = document.querySelectorAll('.section');
+    const buttons = document.querySelectorAll('.nav-btn');
+    const indicators = document.querySelectorAll('.indicator');
+
+    function showSection(index) {
+      // Masquer toutes les sections
+      sections.forEach((section, i) => {
+        section.classList.remove('active');
+        section.style.transform = i < index ? 'translateX(-60px)' : 'translateX(60px)';
+      });
+
+      // Afficher la section active
+      setTimeout(() => {
+        sections[index].classList.add('active');
+      }, 100);
+
+      // Mettre à jour les boutons & indicateurs
+      buttons.forEach((btn, i) => btn.classList.toggle('active', i === index));
+      indicators.forEach((ind, i) => ind.classList.toggle('active', i === index));
+
+      currentSection = index;
+    }
+
+    // Navigation automatique toutes les 9 secondes
+    let autoRotate = setInterval(() => {
+      currentSection = (currentSection + 1) % sections.length;
+      showSection(currentSection);
+    }, 9000);
+
+    // Arrêter l'auto-rotation au survol, reprendre au départ
+    document.querySelector('.container').addEventListener('mouseenter', () => clearInterval(autoRotate));
+    document.querySelector('.container').addEventListener('mouseleave', () => {
+      autoRotate = setInterval(() => {
+        currentSection = (currentSection + 1) % sections.length;
+        showSection(currentSection);
+      }, 9000);
+    });
+
+    // Navigation clavier
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') {
+        currentSection = (currentSection - 1 + sections.length) % sections.length;
+        showSection(currentSection);
+      } else if (e.key === 'ArrowRight') {
+        currentSection = (currentSection + 1) % sections.length;
+        showSection(currentSection);
+      }
+    });
+
+    // Créer des œufs flottants en arrière-plan
+    function createFloatingEggs() {
+      const container = document.getElementById('bgEggs');
+      const colors = ['#ffd700', '#ff9a9e', '#a1c4fd', '#d4fc79', '#fad0c4'];
+      
+      for (let i = 0; i < 10; i++) {
+        const egg = document.createElement('div');
+        egg.className = 'floating-egg';
+        egg.style.left = Math.random() * 100 + '%';
+        egg.style.top = Math.random() * 100 + '%';
+        egg.style.background = `linear-gradient(135deg, ${colors[i % colors.length]}, ${colors[(i + 2) % colors.length]})`;
+        egg.style.animationDelay = Math.random() * 8 + 's';
+        egg.style.animationDuration = (14 + Math.random() * 10) + 's';
+        container.appendChild(egg);
+      }
+    }
+
+    // Initialisation
+    createFloatingEggs();
+  </script>
+</body>
+</html>
