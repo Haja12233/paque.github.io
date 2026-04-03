@@ -1,7 +1,7 @@
-Bienvenue sur Pâques.github.io, un site web festif et symbolique conçu pour célébrer la fête de Pâques à travers une expérience visuelle chaleureuse et immersive.
+Bienvenue sur **Pâques.github.io**, un site web **festif** et **symbolique** conçu pour célébrer la **fête de Pâques** à travers une expérience visuelle chaleureuse et immersive.
 
 🌐 Accéder au site :  
-https://haja12233.github.io/paque.github.io/
+**https://haja12233.github.io/paque.github.io/**
 
 ---
 
