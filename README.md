@@ -1,14 +1,6 @@
-Parfait 👍 voici un **README.md complet, structuré et convaincant** pour ton site de Pâques :
-👉 [https://haja12233.github.io/paque.github.io/](https://haja12233.github.io/paque.github.io/)
+Bienvenue sur Pâques.github.io, un site web festif et symbolique conçu pour célébrer la fête de Pâques à travers une expérience visuelle chaleureuse et immersive.
 
----
-
-````markdown
-# 🐣 Joyeuses Pâques – Site de Vœux et Célébration
-
-Bienvenue sur **Pâques.github.io**, un site web festif et symbolique conçu pour célébrer la fête de **Pâques** à travers une expérience visuelle chaleureuse et immersive.
-
-🌐 **Accéder au site** :  
+🌐 Accéder au site :  
 https://haja12233.github.io/paque.github.io/
 
 ---
@@ -17,7 +9,7 @@ https://haja12233.github.io/paque.github.io/
 
 Ce projet a été créé pour :
 
-- ✨ Transmettre des **vœux de Pâques** de manière moderne et interactive  
+- ✨ Transmettre des vœux de Pâques de manière moderne et interactive  
 - 💖 Partager un message de **joie, d’espoir et de renouveau**  
 - 🎨 Offrir une expérience visuelle agréable et festive  
 - 🧑‍💻 Montrer les compétences en développement web front-end à travers un projet créatif  
